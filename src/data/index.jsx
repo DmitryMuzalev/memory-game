@@ -1,0 +1,43 @@
+import {
+  FaBluesky,
+  FaBug,
+  FaAppleWhole,
+  FaBabyCarriage,
+  FaBell,
+  FaBomb,
+  FaCar,
+  FaCat,
+  FaChessKnight,
+  FaClock,
+  FaDog,
+  FaEgg,
+  FaFish,
+  FaFrog,
+  FaMusic,
+  FaPeace,
+  FaPoop,
+  FaSpider,
+} from "react-icons/fa6";
+
+const cards = [
+  { number: "1", icon: <FaBluesky /> },
+  { number: "2", icon: <FaBug /> },
+  { number: "3", icon: <FaAppleWhole /> },
+  { number: "4", icon: <FaBabyCarriage /> },
+  { number: "5", icon: <FaBell /> },
+  { number: "6", icon: <FaBomb /> },
+  { number: "7", icon: <FaCar /> },
+  { number: "8", icon: <FaCat /> },
+  { number: "9", icon: <FaChessKnight /> },
+  { number: "10", icon: <FaClock /> },
+  { number: "11", icon: <FaDog /> },
+  { number: "12", icon: <FaEgg /> },
+  { number: "13", icon: <FaFish /> },
+  { number: "14", icon: <FaFrog /> },
+  { number: "15", icon: <FaMusic /> },
+  { number: "16", icon: <FaPeace /> },
+  { number: "17", icon: <FaPoop /> },
+  { number: "18", icon: <FaSpider /> },
+];
+
+export default cards;

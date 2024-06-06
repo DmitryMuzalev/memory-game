@@ -1,0 +1,46 @@
+.card {
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  perspective: 1000px;
+  border: none;
+
+  &Inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  &Open &Inner {
+    transform: rotateY(180deg);
+  }
+
+  &Front,
+  &Back {
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &Front {
+    background-color: var(--c-blue-2);
+  }
+
+  &Back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--c-yellow-1);
+    color: var(--c-white-1);
+    font-size: 3rem;
+    font-weight: 700;
+    transform: rotateY(180deg);
+  }
+}

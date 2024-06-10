@@ -8,7 +8,7 @@ function GameHeader() {
       <Logo />
       <div className={styles.gameHeaderBtns}>
         <Button type="primary">restart</Button>
-        <Button type="default">new game</Button>
+        <Button type="secondary">new game</Button>
       </div>
     </header>
   );

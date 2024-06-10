@@ -1,4 +1,5 @@
 .button {
+  width: 100%;
   border: none;
   font-family: inherit;
   font-weight: 700;
@@ -17,12 +18,39 @@
       background-color: var(--c-yellow-2);
     }
   }
-  &Default {
+
+  &Secondary {
     background-color: var(--c-blue-6);
     color: var(--c-blue-2);
     &:hover {
       background-color: var(--c-blue-3);
       color: var(--c-white-1);
     }
+  }
+
+  &Circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.25rem;
+    width: 3.25rem;
+    padding: 0;
+    border-radius: 50%;
+    font-size: inherit;
+    font-weight: inherit;
+
+    //!
+  }
+  &Circle,
+  &Default {
+    background-color: var(--c-blue-5);
+    color: var(--c-white-1);
+    &:hover {
+      background-color: var(--c-blue-3);
+    }
+  }
+
+  &Active {
+    background-color: var(--c-blue-2);
   }
 }

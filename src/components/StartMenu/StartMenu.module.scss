@@ -1,0 +1,35 @@
+.startMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--c-blue-1);
+  &Body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    width: 100%;
+    background-color: var(--c-white-1);
+    padding: 2.25rem 2.5rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
+  }
+
+  &Block {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.125rem;
+    font-weight: 700;
+    gap: 1rem;
+
+    label {
+      color: var(--c-blue-4);
+    }
+
+    &Btns {
+      display: flex;
+      align-items: center;
+      column-gap: 1.5rem;
+    }
+  }
+}

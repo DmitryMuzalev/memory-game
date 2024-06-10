@@ -35,21 +35,40 @@ button {
 }
 
 .app {
-  display: flex;
+  /*   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
   margin: 0 auto;
   width: 1140px;
-  padding: 20px;
+  padding: 20px; */
+}
+
+.gameContainer {
+  width: 573px;
 }
 
 .gameArea {
-  width: 573px;
+  width: 100%;
   height: 573px;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(6, 1fr);
   justify-items: center;
   align-items: stretch;
+  margin-bottom: 2rem;
+}
+
+.gameInfo {
+  display: flex;
+  gap: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  padding: 0 1rem;
 }

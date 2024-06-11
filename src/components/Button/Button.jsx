@@ -3,16 +3,17 @@ import styles from "./Button.module.scss";
 
 function Button({
   children,
-  cb = () => {},
   type = "default",
+  isCircle = false,
   isActive = false,
+  cb = () => {},
 }) {
   const stylesForButton = clsx(
     styles.button,
     type === "primary" && styles.buttonPrimary,
     type === "secondary" && styles.buttonSecondary,
-    type === "circle" && styles.buttonCircle,
     type === "default" && styles.buttonDefault,
+    isCircle && styles.buttonCircle,
     isActive && styles.buttonActive
   );
   return (

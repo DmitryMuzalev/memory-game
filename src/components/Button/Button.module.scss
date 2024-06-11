@@ -1,10 +1,11 @@
 .button {
   width: 100%;
+  min-width: 2.625em;
   border: none;
   font-family: inherit;
   font-weight: 700;
   line-height: 1;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /*  clamp(1rem, 3vw, 1.25rem); */
   padding: 0.8em 1em;
   border-radius: 1.3em;
   text-transform: capitalize;
@@ -32,16 +33,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3.25rem;
-    width: 3.25rem;
+    height: 2.625em;
+    width: 2.625em;
     padding: 0;
     border-radius: 50%;
-    font-size: inherit;
-    font-weight: inherit;
-
-    //!
+    font-size: 1.25rem; /*  clamp(1rem, 3vw, 1.25rem); */
+    flex-shrink: 0;
   }
-  &Circle,
+
   &Default {
     background-color: var(--c-blue-5);
     color: var(--c-white-1);
@@ -52,5 +51,12 @@
 
   &Active {
     background-color: var(--c-blue-2);
+  }
+
+  @media (max-width: 540px) {
+    &,
+    &Circle {
+      font-size: 1rem;
+    }
   }
 }

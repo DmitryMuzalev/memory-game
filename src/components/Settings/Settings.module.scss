@@ -1,0 +1,36 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+
+  &Block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    label {
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--c-blue-4);
+    }
+  }
+
+  &Btns {
+    display: flex;
+    column-gap: 1rem;
+  }
+
+  @media (max-width: 540px) {
+    row-gap: 1rem;
+
+    &Block {
+      gap: 0.75rem;
+      label {
+        font-size: 0.938rem;
+      }
+    }
+
+    &Btns {
+      column-gap: 0.75rem;
+    }
+  }
+}

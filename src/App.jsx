@@ -1,6 +1,7 @@
 /* import data from "./data"; */
 
-import { StartMenu } from "./components/StartMenu/StartMenu";
+import { Game } from "./components/Game/Game";
+//import { StartMenu } from "./components/StartMenu/StartMenu";
 
 //import { Card } from "./components/Card/Card";
 /* import { shuffleCards } from "./utils/shuffle-algorithm";
@@ -22,7 +23,8 @@ function App() {
 
   return (
     <div className="app">
-      <StartMenu />
+      {/* <StartMenu /> */}
+      <Game />
       {/*   <div>
         <GameHeader />
         <div className="gameContainer">

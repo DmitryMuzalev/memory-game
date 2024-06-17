@@ -1,25 +1,7 @@
 .infoBlock {
-  width: 100%;
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--c-blue-6);
-  padding: 1rem 1.5rem;
-  font-weight: 700;
-  gap: 1rem;
-  border-radius: 0.625rem;
-
-  &Label {
-    text-transform: capitalize;
-    font-size: 1.125rem;
-    color: var(--c-blue-3);
-  }
-
-  &Value {
-    font-size: 2rem;
-    color: var(--c-blue-2);
-  }
-
-  &Active {
+  @media (max-width: 540px) {
+    flex-direction: column;
   }
 }

@@ -11,7 +11,7 @@ import { useMediaQuery } from "react-responsive";
 function GameFooter() {
   const isMobile = useMediaQuery({ query: "(max-width: 540px)" });
 
-  const [isOnePlayerMode, setOnePlayerMode] = useState(false);
+  const [isOnePlayerMode, setOnePlayerMode] = useState(true);
   const [time, setTime] = useState(0);
 
   useEffect(() => {

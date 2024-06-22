@@ -1,10 +1,10 @@
-import data from "../../data";
+import data from '../../data';
 
-import { useEffect, useState } from "react";
-import { shuffleCards } from "../../utils/shuffle-algorithm.js";
-import { Card } from "../Card/Card";
+import { useEffect, useState } from 'react';
+import { shuffleCards } from '../../utils/shuffle-algorithm.js';
+import { Card } from '../Card/Card';
 
-import styles from "./GameField.module.scss";
+import styles from './GameField.module.scss';
 
 function GameField() {
   const [grid, setGrid] = useState(4);

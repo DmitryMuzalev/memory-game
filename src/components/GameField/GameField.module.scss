@@ -1,9 +1,10 @@
 .gameField {
-  flex-grow: 1;
-
   display: grid;
   gap: 0.5rem;
+  //! 4x4
   grid-template-columns: repeat(4, 1fr);
+  //! 6x6
+  //grid-template-columns: repeat(6, 1fr);
 }
 
 /* 

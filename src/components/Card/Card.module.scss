@@ -1,14 +1,10 @@
 .card {
   background-color: transparent;
-  //! 4x4
-  height: 7.5rem;
-  width: 7.5rem;
-  //! 6x6
-  /* height: 5rem;
-  width: 5rem;*/
-
   perspective: 1000px;
   border: none;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
 
   &Inner {
     position: relative;
@@ -46,26 +42,5 @@
     color: var(--c-white-1);
     font-weight: 700;
     transform: rotateY(180deg);
-    //! 4x4
-    /*  font-size: 3.5rem;*/
-    //! 6x6
-    font-size: 2.5rem;
-  }
-  @media (max-width: 540px) {
-    //! 4x4
-
-    height: 4.5rem;
-    width: 4.5rem;
-
-    //! 6x6
-    /*   height: 3rem;
-    width: 3rem;*/
-
-    &Back {
-      //! 4x4
-      font-size: 2.5rem;
-      //! 6x6
-      /* font-size: 1.75rem;*/
-    }
   }
 }

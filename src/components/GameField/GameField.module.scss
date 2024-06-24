@@ -1,43 +1,40 @@
 .gameField {
   display: grid;
   gap: 0.5rem;
-  //! 4x4
-  grid-template-columns: repeat(4, 1fr);
-  //! 6x6
-  //grid-template-columns: repeat(6, 1fr);
+
+  &Grid_4 {
+    grid-template-columns: repeat(4, 1fr);
+    button {
+      height: 7.5rem;
+      width: 7.5rem;
+      font-size: 3.5rem;
+    }
+  }
+
+  &Grid_6 {
+    grid-template-columns: repeat(6, 1fr);
+    button {
+      height: 5rem;
+      width: 5rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 540px) {
+    &Grid_4 {
+      button {
+        height: 4.5rem;
+        width: 4.5rem;
+        font-size: 2.5rem;
+      }
+    }
+
+    &Grid_6 {
+      button {
+        height: 3rem;
+        width: 3rem;
+        font-size: 1.75rem;
+      }
+    }
+  }
 }
-
-/* 
-
-.app {
-   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  margin: 0 auto;
-  width: 1140px;
-  padding: 20px; 
-}
-
-.gameContainer {
-  width: 573px;
-}
-
-.gameArea {
-  width: 100%;
-  height: 573px;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(6, 1fr);
-  justify-items: center;
-  align-items: stretch;
-  margin-bottom: 2rem;
-}
-
-.gameInfo {
-  display: flex;
-  gap: 2rem;
-}
-
-
-*/

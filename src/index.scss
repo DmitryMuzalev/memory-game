@@ -22,6 +22,8 @@
   --c-white-1: #fcfcfc;
   --c-white-2: #f2f2f2;
 
+  --c-black-1: rgba(0, 0, 0, 0.4);
+
   //_Font:
   --f-family: "Atkinson Hyperlegible", sans-serif;
 }
@@ -38,11 +40,19 @@ button {
   width: 100%;
   max-width: 255px;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   font-weight: 700;
   padding: 1rem 1.5rem;
   background-color: var(--c-blue-6);
   border-radius: 0.625rem;
+
+  &Active {
+    background-color: var(--c-blue-1);
+    span {
+      color: var(--c-white-1) !important;
+    }
+  }
 
   span:first-child {
     text-transform: capitalize;
@@ -56,8 +66,18 @@ button {
     font-size: 2rem;
     color: var(--c-blue-2);
   }
+
   @media (max-width: 540px) {
     gap: 0.5rem;
     padding: 0.75rem 1rem;
+
+    span:first-child {
+      font-size: 1rem;
+    }
+
+    time,
+    span:last-child {
+      font-size: 1.5rem;
+    }
   }
 }

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./GameFinish.module.scss";
+import { Button } from "../Button/Button";
+import { InfoBlock } from "../InfoBlock/InfoBlock";
 
 function GameFinish() {
-  const [isOnePlayerMode, setOnePlayerMode] = useState(false);
+  const [isOnePlayerMode, setOnePlayerMode] = useState(true);
   return (
     <div className={styles.gameFinish}>
       {isOnePlayerMode ? (
@@ -11,7 +13,10 @@ function GameFinish() {
           <p className={styles.gameFinishSubtitle}>
             Game over! Here’s how you got on...
           </p>
-          <div className={styles.gameFinishStat}></div>
+          <div className={styles.gameFinishStat}>
+            <InfoBlock label="Time Elapsed" value={"0:33"} />
+            <InfoBlock label="Moves Taken" value={28} />
+          </div>
         </>
       ) : (
         <>
@@ -19,8 +24,20 @@ function GameFinish() {
           <p className={styles.gameFinishSubtitle}>
             Game over! Here are the results...
           </p>
+          <div className={styles.gameFinishStat}>
+            <InfoBlock
+              label="Player 1 (Winner!)"
+              value={`${5} Pairs`}
+              isActive
+            />
+            <InfoBlock label="Player 2" value={`${3} Pairs`} />
+          </div>
         </>
       )}
+      <div className={styles.gameFinishButtons}>
+        <Button type="primary">restart</Button>
+        <Button type="secondary">new game</Button>
+      </div>
     </div>
   );
 }

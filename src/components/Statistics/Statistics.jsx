@@ -3,6 +3,8 @@ import styles from "./Statistics.module.scss";
 import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from "react-icons/fa6";
 
 function Statistics() {
+  const historyGames = [];
+
   return (
     <div className={styles.statistics}>
       <div className={styles.statisticsCTA}>

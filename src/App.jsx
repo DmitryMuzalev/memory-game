@@ -1,5 +1,5 @@
 import { Game } from "./components/Game/Game";
-//import { StartMenu } from "./components/StartMenu/StartMenu";
+import { StartMenu } from "./components/StartMenu/StartMenu";
 
 //import { Card } from "./components/Card/Card";
 /* import { shuffleCards } from "./utils/shuffle-algorithm";
@@ -10,12 +10,8 @@ import { useEffect, useState } from "react"; */
 function App() {
   return (
     <div className="app">
-      {/* <StartMenu /> */}
-      <Game />
-      {/*   <div>
-        <GameHeader />
-       
-      </div> */}
+      <StartMenu />
+      {/*   <Game /> */}
     </div>
   );
 }

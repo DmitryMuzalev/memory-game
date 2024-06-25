@@ -4,7 +4,7 @@ import { GameFooter } from "../GameFooter/GameFooter";
 import { GameField } from "../GameField/GameField";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { GameFinish } from "../GameFinish/GameFinish";
-//import { GameMenu } from "../GameMenu/GameMenu";
+import { GameMenu } from "../GameMenu/GameMenu";
 
 function Game() {
   return (
@@ -12,9 +12,9 @@ function Game() {
       <GameHeader />
       <GameField />
       <GameFooter />
-      <ModalWindow>
-        {/* <GameMenu /> */} <GameFinish />
-      </ModalWindow>
+      {/*  <ModalWindow>
+        <GameMenu /> <GameFinish /> }
+      </ModalWindow> */}
     </div>
   );
 }

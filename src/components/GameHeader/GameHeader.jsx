@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
-import { Button } from "../Button/Button";
-import { Logo } from "../Logo/Logo";
+import { Button } from "../UI/Button/Button";
+import { Logo } from "../UI/Logo/Logo";
 import styles from "./GameHeader.module.scss";
 
 function GameHeader() {

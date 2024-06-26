@@ -8,7 +8,7 @@ import styles from "./GameField.module.scss";
 import { clsx } from "clsx";
 
 function GameField() {
-  const [gridMode, setGridMode] = useState("4");
+  const [gridMode, setGridMode] = useState("6");
   const [cards, setCards] = useState([]);
 
   useEffect(() => {

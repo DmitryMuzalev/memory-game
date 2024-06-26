@@ -1,4 +1,4 @@
-import { Button } from "../Button/Button";
+import { Button } from "../UI/Button/Button";
 import styles from "./Statistics.module.scss";
 import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from "react-icons/fa6";
 

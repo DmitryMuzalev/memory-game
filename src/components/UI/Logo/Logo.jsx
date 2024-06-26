@@ -1,5 +1,5 @@
-import darkLogo from "../../assets/images/logo-dark.svg";
-import lightLogo from "../../assets/images/logo-light.svg";
+import darkLogo from "../../../assets/images/logo-dark.svg";
+import lightLogo from "../../../assets/images/logo-light.svg";
 
 function Logo({ style = "dark" }) {
   return (

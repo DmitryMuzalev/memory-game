@@ -6,25 +6,30 @@ import { Card } from "../Card/Card";
 
 import styles from "./GameField.module.scss";
 import { clsx } from "clsx";
+import { useSelector } from "react-redux";
+import { getSettings } from "../../features/Settings/settings-slice.js";
 
 function GameField() {
-  const [gridMode, setGridMode] = useState("6");
+  const { theme, grid } = useSelector(getSettings);
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    const items = gridMode === "4" ? data.slice(0, 8) : data;
+    const items = grid === "4x4" ? data.slice(0, 8) : data;
     setCards(() => shuffleCards(items.concat(items)));
   }, []);
 
   const stylesForGameField = clsx(
     styles.gameField,
-    gridMode === "4" ? styles.gameFieldGrid_4 : styles.gameFieldGrid_6
+    grid === "4x4" ? styles.gameFieldGrid_4 : styles.gameFieldGrid_6
   );
 
   return (
     <div className={stylesForGameField}>
       {cards.map((item, index) => (
-        <Card key={index} {...item} />
+        <Card
+          key={index}
+          value={theme === "numbers" ? item.number : item.icon}
+        />
       ))}
     </div>
   );

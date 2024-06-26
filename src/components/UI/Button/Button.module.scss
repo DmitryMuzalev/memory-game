@@ -51,6 +51,10 @@
 
   &Active {
     background-color: var(--c-blue-2);
+    pointer-events: none;
+    &:hover {
+      background-color: var(--c-blue-2);
+    }
   }
 
   @media (max-width: 540px) {

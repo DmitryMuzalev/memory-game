@@ -1,16 +1,19 @@
 import styles from "./Game.module.scss";
 import { GameHeader } from "../GameHeader/GameHeader";
-import { GameFooter } from "../GameFooter/GameFooter";
+import { useSelector } from "react-redux";
+import { getSettings } from "../../features/Settings/settings-slice";
+import { Player } from "../Player/Player";
+import { Multiplayer } from "../Multiplayer/Multiplayer";
 import { GameField } from "../GameField/GameField";
-import { GameFinish } from "../GameFinish/GameFinish";
-import { GameMenu } from "../GameMenu/GameMenu";
 
 function Game() {
+  const { players } = useSelector(getSettings);
   return (
     <div className={styles.game}>
       <GameHeader />
       <GameField />
-      <GameFooter />
+
+      {players === 1 ? <Player /> : <Multiplayer />}
 
       {/* <GameMenu /> */}
       {/* <GameFinish /> */}

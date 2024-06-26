@@ -1,20 +1,28 @@
-import { Button } from "../UI/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "../../components/UI/Button/Button";
 import styles from "./Settings.module.scss";
-
-const defaultSettingsGame = {
-  theme: "numbers",
-  players: "1",
-  size: "4x4",
-};
+import {
+  changeGrid,
+  changeNumberOfPlayers,
+  changeTheme,
+  getSettings,
+} from "./settings-slice";
 
 function Settings() {
+  const { theme, players, grid } = useSelector(getSettings);
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.settings}>
       <div className={styles.settingsBlock}>
         <label>Select Theme</label>
         <div className={styles.settingsBtns}>
           {["numbers", "icons"].map((t, index) => (
-            <Button key={index} isActive={t === defaultSettingsGame.theme}>
+            <Button
+              key={index}
+              isActive={t === theme}
+              cb={() => dispatch(changeTheme(t))}
+            >
               {t}
             </Button>
           ))}
@@ -26,7 +34,8 @@ function Settings() {
           {[...Array(4)].map((_, index) => (
             <Button
               key={index}
-              isActive={index + 1 === +defaultSettingsGame.players}
+              isActive={index + 1 === players}
+              cb={() => dispatch(changeNumberOfPlayers(index + 1))}
             >
               {index + 1}
             </Button>
@@ -36,9 +45,13 @@ function Settings() {
       <div className={styles.settingsBlock}>
         <label>Grid Size</label>
         <div className={styles.settingsBtns}>
-          {["4x4", "6x6"].map((s, index) => (
-            <Button key={index} isActive={s === defaultSettingsGame.size}>
-              {s}
+          {["4x4", "6x6"].map((g, index) => (
+            <Button
+              key={index}
+              isActive={g === grid}
+              cb={() => dispatch(changeGrid(g))}
+            >
+              {g}
             </Button>
           ))}
         </div>

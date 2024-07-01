@@ -11,11 +11,19 @@ import {
   getIsShowStatistic,
   toggleIsShowStatistic,
   changeStatus,
+  loadCards,
 } from "../../features/Game/game-slice";
+import { useEffect } from "react";
+import { getSettings } from "../../features/Settings/settings-slice";
 
 function StartMenu() {
   const dispatch = useDispatch();
   const isShowStatistic = useSelector(getIsShowStatistic);
+  const { grid } = useSelector(getSettings);
+
+  useEffect(() => {
+    dispatch(loadCards(grid));
+  }, [dispatch, grid]);
 
   return (
     <div className={styles.startMenu}>

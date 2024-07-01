@@ -8,4 +8,8 @@ export const store = configureStore({
     settings: settingsReducer,
   },
   devTools: true,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

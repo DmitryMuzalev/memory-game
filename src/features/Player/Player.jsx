@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { timeFormatter } from "../../utils/time-formatter";
-import { InfoBlock } from "../UI/InfoBlock/InfoBlock";
-import { GameFooter } from "../GameFooter/GameFooter";
+import { InfoBlock } from "../../components/UI/InfoBlock/InfoBlock";
+import { GameFooter } from "../../components/GameFooter/GameFooter";
 
 function Player() {
   const [time, setTime] = useState(0);

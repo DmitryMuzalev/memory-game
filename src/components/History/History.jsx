@@ -1,25 +1,27 @@
-import { useDispatch } from "react-redux";
-import { Button } from "../UI/Button/Button";
-import styles from "./Statistics.module.scss";
-import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from "react-icons/fa6";
-import { toggleIsShowStatistic } from "../../features/Game/game-slice";
+import styles from "./History.module.scss";
 
-function Statistics() {
+import { useDispatch } from "react-redux";
+
+import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from "react-icons/fa6";
+import { Button } from "../UI/Button/Button";
+import { changeStatus } from "../../features/Game/game-slice";
+
+function History() {
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.statistics}>
-      <div className={styles.statisticsCTA}>
+    <div className={styles.history}>
+      <div className={styles.historyCTA}>
         <Button
           isCircle
           type="primary"
-          cb={() => dispatch(toggleIsShowStatistic())}
+          cb={() => dispatch(changeStatus("setting"))}
         >
           <FaArrowLeftLong />
         </Button>
         <Button>Clear</Button>
       </div>
-      <div className={styles.statisticsEmpty}>
+      <div className={styles.historyEmpty}>
         <p>
           <FaPuzzlePiece />
           You don&apos;t have any previous games
@@ -32,4 +34,4 @@ function Statistics() {
     </div>
   );
 }
-export { Statistics };
+export { History };

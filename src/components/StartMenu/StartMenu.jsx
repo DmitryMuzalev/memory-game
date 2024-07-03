@@ -5,20 +5,19 @@ import { Button } from "../UI/Button/Button";
 import { Settings } from "../../features/Settings/Settings";
 
 import styles from "./StartMenu.module.scss";
-import { Statistics } from "../Statistics/Statistics";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getIsShowStatistic,
-  toggleIsShowStatistic,
   changeStatus,
   loadCards,
+  getStatus,
 } from "../../features/Game/game-slice";
 import { useEffect } from "react";
 import { getSettings } from "../../features/Settings/settings-slice";
+import { History } from "../History/History";
 
 function StartMenu() {
   const dispatch = useDispatch();
-  const isShowStatistic = useSelector(getIsShowStatistic);
+  const statusGame = useSelector(getStatus);
   const { grid } = useSelector(getSettings);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ function StartMenu() {
     <div className={styles.startMenu}>
       <Logo style="light" />
       <div className={styles.startMenuWrapper}>
-        {!isShowStatistic ? (
+        {statusGame === "setting" && (
           <>
             <Settings />
             <div className={styles.startMenuCTA}>
@@ -39,14 +38,13 @@ function StartMenu() {
               >
                 start game
               </Button>
-              <Button isCircle cb={() => dispatch(toggleIsShowStatistic())}>
+              <Button isCircle cb={() => dispatch(changeStatus("history"))}>
                 <FaChartLine />
               </Button>
             </div>
           </>
-        ) : (
-          <Statistics />
         )}
+        {statusGame === "history" && <History />}
       </div>
     </div>
   );

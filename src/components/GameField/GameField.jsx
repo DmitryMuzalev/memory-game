@@ -2,8 +2,8 @@ import styles from "./GameField.module.scss";
 import { clsx } from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettings } from "../../features/Settings/settings-slice.js";
-import { Card } from "../../components/Card/Card.jsx";
-import { getCards, openCard } from "../Game/game-slice.js";
+import { Card } from "../Card/Card.jsx";
+import { getCards, openCard } from "../../features/Game/game-slice.js";
 
 function GameField() {
   const dispatch = useDispatch();

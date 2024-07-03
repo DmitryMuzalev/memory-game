@@ -9,10 +9,9 @@ export const loadCards = createAsyncThunk("game/load-cards", async (grid) => {
 });
 
 const initialState = {
-  status: "setting", // "finished" | "running"
-  isShowStatistic: false,
+  status: "setting", // "finished" | "running" | "history"
   cards: [],
-  openCards: [],
+  openCard: null,
 };
 
 const gameSlice = createSlice({
@@ -22,16 +21,12 @@ const gameSlice = createSlice({
     changeStatus: (state, action) => {
       state.status = action.payload;
     },
-    toggleIsShowStatistic: (state) => {
-      state.isShowStatistic = !state.isShowStatistic;
-    },
 
     openCard: (state, action) => {
       state.cards[action.payload].status = "open";
-    },
-
-    closedCard: (state, action) => {
-      state.cards[action.payload].status = "closed";
+      if (!state.openCard) {
+        state.openCard = action.payload;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -40,14 +35,12 @@ const gameSlice = createSlice({
     });
   },
   selectors: {
-    getIsShowStatistic: (state) => state.isShowStatistic,
     getStatus: (state) => state.status,
     getCards: (state) => state.cards,
   },
 });
 
-export const { changeStatus, toggleIsShowStatistic, openCard, closedCard } =
-  gameSlice.actions;
-export const { getStatus, getIsShowStatistic, getCards } = gameSlice.selectors;
+export const { changeStatus, openCard } = gameSlice.actions;
+export const { getStatus, getCards } = gameSlice.selectors;
 
 export const gameReducer = gameSlice.reducer;

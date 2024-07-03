@@ -11,4 +11,4 @@ const playerSlice = createSlice({
   reducers: {},
 });
 
-export const gameReducer = playerSlice.reducer;
+export const playerReducer = playerSlice.reducer;

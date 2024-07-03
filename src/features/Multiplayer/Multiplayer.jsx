@@ -1,5 +1,5 @@
-import { GameFooter } from "../GameFooter/GameFooter";
-import { InfoBlock } from "../UI/InfoBlock/InfoBlock";
+import { GameFooter } from "../../components/GameFooter/GameFooter";
+import { InfoBlock } from "../../components/UI/InfoBlock/InfoBlock";
 
 import { useMediaQuery } from "react-responsive";
 

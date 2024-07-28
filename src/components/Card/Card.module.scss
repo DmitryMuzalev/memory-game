@@ -1,10 +1,19 @@
 .card {
+  cursor: pointer;
   background-color: transparent;
   perspective: 1000px;
   border: none;
   height: 100%;
   width: 100%;
   font-size: 1rem;
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &:disabled &Back {
+    background-color: var(--c-blue-5);
+  }
 
   &Inner {
     position: relative;
@@ -13,6 +22,10 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+  }
+
+  &Open {
+    pointer-events: none;
   }
 
   &Open &Inner {
@@ -32,6 +45,11 @@
 
   &Front {
     background-color: var(--c-blue-2);
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--c-blue-3);
+    }
   }
 
   &Back {

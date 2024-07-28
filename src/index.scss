@@ -1,5 +1,5 @@
 @import-normalize;
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -25,15 +25,11 @@
   --c-black-1: rgba(0, 0, 0, 0.4);
 
   //_Font:
-  --f-family: "Atkinson Hyperlegible", sans-serif;
+  --f-family: 'Atkinson Hyperlegible', sans-serif;
 }
 
 body {
   font-family: var(--f-family);
-}
-
-button {
-  cursor: pointer;
 }
 
 .menuWrapper {

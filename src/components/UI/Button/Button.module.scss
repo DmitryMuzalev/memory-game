@@ -1,31 +1,38 @@
 .button {
   width: 100%;
   min-width: 2.625em;
-  border: none;
   font-family: inherit;
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1;
-  font-size: 1.25rem; /*  clamp(1rem, 3vw, 1.25rem); */
-  padding: 0.8em 1em;
-  border-radius: 1.3em;
   text-transform: capitalize;
-  background-color: transparent;
+  line-height: 1;
+  padding: 0.8em 1em;
+  border: none;
+  border-radius: 1.3em;
+  color: var(--c-white-1);
+  background-color: var(--c-blue-5);
   transition: all 0.3s;
 
+  &:hover {
+    background-color: var(--c-blue-3);
+  }
+
   &Primary {
-    background-color: var(--c-yellow-1);
     color: var(--c-white-1);
+    background-color: var(--c-yellow-1);
+
     &:hover {
       background-color: var(--c-yellow-2);
     }
   }
 
   &Secondary {
-    background-color: var(--c-blue-6);
     color: var(--c-blue-2);
+    background-color: var(--c-blue-6);
+
     &:hover {
-      background-color: var(--c-blue-3);
       color: var(--c-white-1);
+      background-color: var(--c-blue-3);
     }
   }
 
@@ -37,21 +44,14 @@
     width: 2.625em;
     padding: 0;
     border-radius: 50%;
-    font-size: 1.25rem; /*  clamp(1rem, 3vw, 1.25rem); */
+    font-size: 1.25rem;
     flex-shrink: 0;
   }
 
-  &Default {
-    background-color: var(--c-blue-5);
-    color: var(--c-white-1);
-    &:hover {
-      background-color: var(--c-blue-3);
-    }
-  }
-
   &Active {
-    background-color: var(--c-blue-2);
     pointer-events: none;
+    background-color: var(--c-blue-2);
+
     &:hover {
       background-color: var(--c-blue-2);
     }

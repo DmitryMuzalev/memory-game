@@ -1,21 +1,21 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import data from "../../data";
-import { shuffleCards } from "../../utils/shuffle-algorithm";
+import data from '../../data';
+import { shuffleCards } from '../../utils/shuffle-algorithm';
 
-export const loadCards = createAsyncThunk("game/load-cards", async (grid) => {
-  const items = grid === "4x4" ? data.slice(0, 8) : data;
+export const loadCards = createAsyncThunk('game/load-cards', async (grid) => {
+  const items = grid === '4x4' ? data.slice(0, 8) : data;
   return shuffleCards(items.concat(items));
 });
 
 const initialState = {
-  status: "setting", // "finished" | "running" | "history"
+  status: 'setting', // "finished" | "running" | "history"
   cards: [],
   openCard: null,
 };
 
 const gameSlice = createSlice({
-  name: "game",
+  name: 'game',
   initialState,
   reducers: {
     changeStatus: (state, action) => {
@@ -23,10 +23,13 @@ const gameSlice = createSlice({
     },
 
     openCard: (state, action) => {
-      state.cards[action.payload].status = "open";
+      state.cards[action.payload].status = 'open';
       if (!state.openCard) {
         state.openCard = action.payload;
       }
+    },
+    toggleShowHistory: (state) => {
+      state.isShowHistory = !state.isShowHistory;
     },
   },
   extraReducers: (builder) => {
@@ -37,10 +40,11 @@ const gameSlice = createSlice({
   selectors: {
     getStatus: (state) => state.status,
     getCards: (state) => state.cards,
+    getIsShowHistory: (state) => state.isShowHistory,
   },
 });
 
-export const { changeStatus, openCard } = gameSlice.actions;
-export const { getStatus, getCards } = gameSlice.selectors;
+export const { changeStatus, openCard, toggleShowHistory } = gameSlice.actions;
+export const { getStatus, getCards, getIsShowHistory } = gameSlice.selectors;
 
 export const gameReducer = gameSlice.reducer;

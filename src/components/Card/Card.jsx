@@ -1,5 +1,6 @@
 import styles from './Card.module.scss';
 import clsx from 'clsx';
+
 import { useSelector } from 'react-redux';
 import { getSettings } from '../../features/Settings/settings-slice';
 

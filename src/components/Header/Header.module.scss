@@ -1,12 +1,13 @@
-.gameHeader {
+.header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  &Btns {
+  &CTA {
     display: flex;
     gap: 0.875rem;
+
     button {
       width: auto;
       padding: 0.8em 1.5em;

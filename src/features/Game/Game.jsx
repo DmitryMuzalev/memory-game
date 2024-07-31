@@ -1,16 +1,16 @@
-import styles from "./Game.module.scss";
+import styles from './Game.module.scss';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { getSettings } from "../Settings/settings-slice";
-import { getStatus } from "./game-slice";
+import { getSettings } from '../Settings/settings-slice';
+import { getStatus } from './game-slice';
 
-import { GameHeader } from "../../components/GameHeader/GameHeader";
-import { GameField } from "../../components/GameField/GameField";
-import { GameFinish } from "../../components/GameFinish/GameFinish";
+import { GameField } from '../../components/GameField/GameField';
+import { GameFinish } from '../../components/GameFinish/GameFinish';
 
-import { Player } from "../Player/Player";
-import { Multiplayer } from "../Multiplayer/Multiplayer";
+import { Player } from '../Player/Player';
+import { Multiplayer } from '../Multiplayer/Multiplayer';
+import { Header } from '../../components/Header/Header';
 
 function Game() {
   const { players } = useSelector(getSettings);
@@ -18,10 +18,10 @@ function Game() {
 
   return (
     <div className={styles.game}>
-      <GameHeader />
+      <Header />
       <GameField />
       {players === 1 ? <Player /> : <Multiplayer />}
-      {gameStatus === "finished" && <GameFinish />}
+      {gameStatus === 'finished' && <GameFinish />}
 
       {/* <GameMenu /> */}
     </div>

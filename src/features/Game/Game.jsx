@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 
 import { getStatus } from './game-slice';
 
-import { GameFinish } from '../../components/GameFinish/GameFinish';
-
 import { Header } from '../../components/Header/Header';
 import { Cards } from '../../components/Cards/Cards';
 import { Info } from '../../components/Info/Info';
+import { Menu } from '../../components/Menu/Menu';
+import { Finish } from '../../components/Finish/Finish';
 
 function Game() {
   const gameStatus = useSelector(getStatus);
@@ -18,9 +18,8 @@ function Game() {
       <Header />
       <Cards />
       <Info />
-      {gameStatus === 'finished' && <GameFinish />}
-
-      {/* <GameMenu /> */}
+      {gameStatus === 'finished' && <Finish />}
+      {gameStatus === 'pause' && <Menu />}
     </div>
   );
 }

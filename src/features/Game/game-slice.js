@@ -9,7 +9,7 @@ export const loadCards = createAsyncThunk('game/load-cards', async (grid) => {
 });
 
 const initialState = {
-  status: 'setting', // "finished" | "running" | "history"
+  status: 'setting', // "finished" | "running" | "history" | "pause"
   cards: [],
   openCard: null,
   currentPlayer: 2,

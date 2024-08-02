@@ -12,6 +12,7 @@ const initialState = {
   status: 'setting', // "finished" | "running" | "history"
   cards: [],
   openCard: null,
+  currentPlayer: 2,
 };
 
 const gameSlice = createSlice({
@@ -41,10 +42,12 @@ const gameSlice = createSlice({
     getStatus: (state) => state.status,
     getCards: (state) => state.cards,
     getIsShowHistory: (state) => state.isShowHistory,
+    getCurrentPlayer: (state) => state.currentPlayer,
   },
 });
 
 export const { changeStatus, openCard, toggleShowHistory } = gameSlice.actions;
-export const { getStatus, getCards, getIsShowHistory } = gameSlice.selectors;
+export const { getStatus, getCards, getIsShowHistory, getCurrentPlayer } =
+  gameSlice.selectors;
 
 export const gameReducer = gameSlice.reducer;

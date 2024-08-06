@@ -1,15 +1,19 @@
-import styles from './Info.module.scss';
+import styles from "./Info.module.scss";
 
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 
-import { getSettings } from '../../features/Settings/settings-slice';
+import { getSettings } from "../../features/Settings/settings-slice";
 
-import { timeFormatter } from '../../utils/time-formatter';
+import { timeFormatter } from "../../utils/time-formatter";
 
-import { InfoBlock } from '../UI/InfoBlock/InfoBlock';
-import { getCurrentPlayer } from '../../features/Game/game-slice';
+import { InfoBlock } from "../UI/InfoBlock/InfoBlock";
+import {
+  changeTime,
+  getMovesCounter,
+  getTime,
+} from "../../features/Game/game-slice";
 
 function Info() {
   const { playersQuantity } = useSelector(getSettings);
@@ -21,28 +25,30 @@ function Info() {
 }
 
 function PlayerMode() {
+  const movesCounter = useSelector(getMovesCounter);
   return (
     <>
       <Timer />
-      <InfoBlock label="movies" value="0" />
+      <InfoBlock label="moves" value={movesCounter} />
     </>
   );
 }
 
 function Timer() {
-  const [time, setTime] = useState(0);
+  const dispatch = useDispatch();
+  const time = useSelector(getTime);
 
   useEffect(() => {
-    const timeId = setInterval(() => setTime((prev) => prev + 1), 1000);
+    const timeId = setInterval(() => dispatch(changeTime(time + 1)), 1000);
     return () => clearInterval(timeId);
-  }, []);
+  }, [dispatch, time]);
 
   return <InfoBlock label="time" value={timeFormatter(time)} />;
 }
 
 function MultiplayerMode() {
-  const isMobile = useMediaQuery({ query: '(max-width: 540px)' });
-  const currentPlayer = useSelector(getCurrentPlayer);
+  const isMobile = useMediaQuery({ query: "(max-width: 540px)" });
+  const currentPlayer = 0;
 
   const players = [
     { id: 1, points: 2 },

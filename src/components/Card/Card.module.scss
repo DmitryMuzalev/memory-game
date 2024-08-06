@@ -14,6 +14,9 @@
   &:disabled &Back {
     background-color: var(--c-blue-5);
   }
+  &:disabled &Inner {
+    transform: rotateY(180deg);
+  }
 
   &Inner {
     position: relative;

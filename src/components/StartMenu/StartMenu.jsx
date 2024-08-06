@@ -1,13 +1,14 @@
-import styles from './StartMenu.module.scss';
-import { FaChartLine } from 'react-icons/fa6';
+import styles from "./StartMenu.module.scss";
+import { FaChartLine } from "react-icons/fa6";
 
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeStatus, loadCards } from '../../features/Game/game-slice';
-import { getSettings } from '../../features/Settings/settings-slice';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeStatus, loadCards } from "../../features/Game/game-slice";
+import { getSettings } from "../../features/Settings/settings-slice";
 
-import { Button } from '../UI/Button/Button';
-import { Settings } from '../../features/Settings/Settings';
+import { Button } from "../UI/Button/Button";
+import { Settings } from "../../features/Settings/Settings";
+import { toggleHistory } from "../../features/History/history-slice";
 
 function StartMenu() {
   const dispatch = useDispatch();
@@ -29,10 +30,10 @@ function StartMenuCTA() {
   const dispatch = useDispatch();
   return (
     <div className={styles.startMenuCTA}>
-      <Button type="primary" cb={() => dispatch(changeStatus('running'))}>
+      <Button type="primary" cb={() => dispatch(changeStatus("running"))}>
         start game
       </Button>
-      <Button isCircle cb={() => dispatch(changeStatus('history'))}>
+      <Button isCircle cb={() => dispatch(toggleHistory())}>
         <FaChartLine />
       </Button>
     </div>

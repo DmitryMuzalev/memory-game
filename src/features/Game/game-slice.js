@@ -16,7 +16,7 @@ export const checkingOpenedCards = createAsyncThunk(
 );
 
 const initialState = {
-  status: "setting", // "finished" | "running" | "history" | "pause"
+  status: "setting", // "finished" | "running"  | "pause"
   cards: [],
   openedCards: [],
   movesCounter: 0,

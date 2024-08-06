@@ -1,10 +1,10 @@
-import styles from './History.module.scss';
-import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from 'react-icons/fa6';
+import styles from "./History.module.scss";
+import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from "react-icons/fa6";
 
-import { useDispatch } from 'react-redux';
-import { changeStatus } from '../../features/Game/game-slice';
+import { useDispatch } from "react-redux";
 
-import { Button } from '../UI/Button/Button';
+import { toggleHistory } from "./history-slice";
+import { Button } from "../../components/UI/Button/Button";
 
 function History() {
   return (
@@ -19,11 +19,7 @@ function HistoryCTA() {
   const dispatch = useDispatch();
   return (
     <div className={styles.historyCTA}>
-      <Button
-        isCircle
-        type="primary"
-        cb={() => dispatch(changeStatus('setting'))}
-      >
+      <Button isCircle type="primary" cb={() => dispatch(toggleHistory())}>
         <FaArrowLeftLong />
       </Button>
       <Button>Clear</Button>

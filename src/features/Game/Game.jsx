@@ -12,7 +12,6 @@ import { Finish } from "../../components/Finish/Finish";
 
 function Game() {
   const gameStatus = useSelector(getStatus);
-  console.log(gameStatus);
 
   return (
     <div className={styles.game}>

@@ -1,19 +1,14 @@
 import styles from "./Info.module.scss";
 
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
 import { getSettings } from "../../features/Settings/settings-slice";
 
-import { timeFormatter } from "../../utils/time-formatter";
-
 import { InfoBlock } from "../UI/InfoBlock/InfoBlock";
-import {
-  changeTime,
-  getMovesCounter,
-  getTime,
-} from "../../features/Game/game-slice";
+import { Timer } from "../../features/Timer/Timer";
+
+import { getMovesCounter } from "../../features/Game/game-slice";
 
 function Info() {
   const { playersQuantity } = useSelector(getSettings);
@@ -32,18 +27,6 @@ function PlayerMode() {
       <InfoBlock label="moves" value={movesCounter} />
     </>
   );
-}
-
-function Timer() {
-  const dispatch = useDispatch();
-  const time = useSelector(getTime);
-
-  useEffect(() => {
-    const timeId = setInterval(() => dispatch(changeTime(time + 1)), 1000);
-    return () => clearInterval(timeId);
-  }, [dispatch, time]);
-
-  return <InfoBlock label="time" value={timeFormatter(time)} />;
 }
 
 function MultiplayerMode() {

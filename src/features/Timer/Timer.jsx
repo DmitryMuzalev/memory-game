@@ -12,8 +12,10 @@ function Timer() {
   const timer = useSelector(getTimer);
 
   useEffect(() => {
-    const timeId = setInterval(() => dispatch(changeTimerValue()), 1000);
-    return () => clearInterval(timeId);
+    if (timer.running) {
+      const timeId = setInterval(() => dispatch(changeTimerValue()), 1000);
+      return () => clearInterval(timeId);
+    }
   }, [dispatch, timer]);
 
   return <InfoBlock label="time" value={timeFormatter(timer.value)} />;

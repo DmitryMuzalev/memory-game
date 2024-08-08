@@ -9,6 +9,7 @@ import { getSettings } from "../../features/Settings/settings-slice";
 import { Button } from "../UI/Button/Button";
 import { Settings } from "../../features/Settings/Settings";
 import { toggleHistory } from "../../features/History/history-slice";
+import { startTimer } from "../../features/Timer/timer-slice";
 
 function StartMenu() {
   const dispatch = useDispatch();
@@ -30,7 +31,13 @@ function StartMenuCTA() {
   const dispatch = useDispatch();
   return (
     <div className={styles.startMenuCTA}>
-      <Button type="primary" cb={() => dispatch(changeStatus("running"))}>
+      <Button
+        type="primary"
+        cb={() => {
+          dispatch(changeStatus("running"));
+          dispatch(startTimer());
+        }}
+      >
         start game
       </Button>
       <Button isCircle cb={() => dispatch(toggleHistory())}>

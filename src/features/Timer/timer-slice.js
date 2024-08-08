@@ -22,11 +22,12 @@ const timerSlice = createSlice({
     },
   },
   selectors: {
-    getTimerValue: (state) => state,
+    getTimer: (state) => state,
   },
 });
 
-export const { changeTimerValue, startTimer, stopTimer } = timerSlice.actions;
+export const { changeTimerValue, startTimer, stopTimer, resetTimer } =
+  timerSlice.actions;
 export const { getTimer } = timerSlice.selectors;
 
 export const timerReducer = timerSlice.reducer;

@@ -1,15 +1,16 @@
 import styles from "./Finish.module.scss";
 
-import { InfoBlock } from "../UI/InfoBlock/InfoBlock";
-import { ModalWindow } from "../UI/ModalWindow/ModalWindow";
-import { Button } from "../UI/Button/Button";
+import { InfoBlock } from "../../components/UI/InfoBlock/InfoBlock";
+import { ModalWindow } from "../../components/UI/ModalWindow/ModalWindow";
+import { Button } from "../../components/UI/Button/Button";
 
 import { useMediaQuery } from "react-responsive";
 import { useSelector } from "react-redux";
 
-import { getSettings } from "../../features/Settings/settings-slice";
-import { getMovesCounter, getTime } from "../../features/Game/game-slice";
+import { getSettings } from "../Settings/settings-slice";
+import { getMovesCounter } from "../Game/game-slice";
 import { timeFormatter } from "../../utils/time-formatter";
+import { getTimer } from "../Timer/timer-slice";
 
 function Finish() {
   const { playersQuantity } = useSelector(getSettings);
@@ -26,7 +27,7 @@ function Finish() {
 
 function FinishPlayerMode() {
   const movesCounter = useSelector(getMovesCounter);
-  const time = useSelector(getTime);
+  const { value } = useSelector(getTimer);
   return (
     <>
       <h2 className={styles.finishTitle}>You did it!</h2>
@@ -34,7 +35,7 @@ function FinishPlayerMode() {
         Game over! Here’s how you got on...
       </p>
       <div className={styles.finishStatistic}>
-        <InfoBlock label="Time Elapsed" value={timeFormatter(time)} />
+        <InfoBlock label="Time Elapsed" value={timeFormatter(value)} />
         <InfoBlock label="Moves Taken" value={movesCounter} />
       </div>
     </>

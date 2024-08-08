@@ -6,13 +6,14 @@ import { Card } from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getSettings } from "../../features/Settings/settings-slice";
 import {
-  changeStatus,
   checkingOpenedCards,
   getCards,
   getOpenedCards,
   openCard,
 } from "../../features/Game/game-slice";
 import { useEffect } from "react";
+import { showFinish } from "../../features/Finish/finish-slice";
+import { stopTimer } from "../../features/Timer/timer-slice";
 
 function Cards() {
   const dispatch = useDispatch();
@@ -37,7 +38,8 @@ function Cards() {
   useEffect(() => {
     const isGameOver = cardsArray.every((card) => card.status === "guessed");
     if (isGameOver) {
-      dispatch(changeStatus("finished"));
+      dispatch(showFinish(true));
+      dispatch(stopTimer());
     }
   }, [dispatch, cardsArray]);
 

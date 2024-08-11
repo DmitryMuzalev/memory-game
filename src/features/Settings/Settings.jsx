@@ -5,11 +5,12 @@ import {
   changeGrid,
   changePlayersQuantity,
   changeTheme,
-  getSettings,
 } from './settings-slice';
 
 function Settings() {
-  const { theme, playersQuantity, grid } = useSelector(getSettings);
+  const { theme, playersQuantity, grid } = useSelector(
+    (state) => state.settings
+  );
   const dispatch = useDispatch();
 
   return (

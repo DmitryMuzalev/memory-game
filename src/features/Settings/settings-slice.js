@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { resetToDefault } from '../../utils/root-actions';
 
 const initialState = {
   theme: 'numbers',
@@ -20,12 +21,12 @@ const settingsSlice = createSlice({
       state.grid = action.payload;
     },
   },
-  selectors: {
-    getSettings: (state) => state,
+  extraReducers: (builder) => {
+    builder.addCase(resetToDefault, () => initialState);
   },
 });
 
 export const { changeTheme, changePlayersQuantity, changeGrid } =
   settingsSlice.actions;
-export const { getSettings } = settingsSlice.selectors;
+
 export const settingsReducer = settingsSlice.reducer;

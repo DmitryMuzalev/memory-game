@@ -1,21 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import { resetToDefault } from '../../utils/root-actions';
 
 const finishSlice = createSlice({
-  name: "finish",
-  initialState: {
-    isShow: false,
-  },
+  name: 'finish',
+  initialState: false,
   reducers: {
-    showFinish: (state, action) => {
-      state.isShow = action.payload;
-    },
+    toggleFinish: (_, action) => action.payload,
   },
-  selectors: {
-    getIsShowFinish: (state) => state.isShow,
+  extraReducers: (builder) => {
+    builder.addCase(resetToDefault, () => false);
   },
 });
 
-export const { showFinish } = finishSlice.actions;
-export const { getIsShowFinish } = finishSlice.selectors;
+export const { toggleFinish } = finishSlice.actions;
 
 export const finishReducer = finishSlice.reducer;

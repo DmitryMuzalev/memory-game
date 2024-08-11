@@ -1,15 +1,15 @@
-import { InfoBlock } from "../../components/UI/InfoBlock/InfoBlock";
+import { InfoBlock } from '../../components/UI/InfoBlock/InfoBlock';
 
-import { timeFormatter } from "../../utils/time-formatter";
+import { timeFormatter } from '../../utils/time-formatter';
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { changeTimerValue, getTimer } from "./timer-slice";
+import { changeTimerValue } from './timer-slice';
 
 function Timer() {
   const dispatch = useDispatch();
-  const timer = useSelector(getTimer);
+  const timer = useSelector((state) => state.timer);
 
   useEffect(() => {
     if (timer.running) {

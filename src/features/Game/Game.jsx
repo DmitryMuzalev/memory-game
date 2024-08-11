@@ -1,15 +1,16 @@
-import styles from "./Game.module.scss";
+import styles from './Game.module.scss';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { Header } from "../../components/Header/Header";
-import { Cards } from "../../components/Cards/Cards";
-import { Info } from "../../components/Info/Info";
-import { Finish } from "../Finish/Finish";
-import { getIsShowFinish } from "../Finish/finish-slice";
+import { Header } from '../../components/Header/Header';
+import { Cards } from '../../components/Cards/Cards';
+import { Info } from '../../components/Info/Info';
+import { Finish } from '../Finish/Finish';
+import { Menu } from '../Menu/Menu';
 
 function Game() {
-  const isFinish = useSelector(getIsShowFinish);
+  const isFinish = useSelector((state) => state.finish);
+  const isMenuOpen = useSelector((state) => state.menu);
 
   return (
     <div className={styles.game}>
@@ -17,7 +18,7 @@ function Game() {
       <Cards />
       <Info />
       {isFinish && <Finish />}
-      {/*  {gameStatus === "pause" && <Menu />} */}
+      {isMenuOpen && <Menu />}
     </div>
   );
 }

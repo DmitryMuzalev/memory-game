@@ -1,29 +1,29 @@
-import clsx from "clsx";
-import styles from "./Cards.module.scss";
+import clsx from 'clsx';
+import styles from './Cards.module.scss';
 
-import { Card } from "../Card/Card";
+import { Card } from '../Card/Card';
 
-import { useDispatch, useSelector } from "react-redux";
-import { getSettings } from "../../features/Settings/settings-slice";
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   checkingOpenedCards,
   getCards,
   getOpenedCards,
   openCard,
-} from "../../features/Game/game-slice";
-import { useEffect } from "react";
-import { showFinish } from "../../features/Finish/finish-slice";
-import { stopTimer } from "../../features/Timer/timer-slice";
+} from '../../features/Game/game-slice';
+import { useEffect } from 'react';
+import { toggleFinish } from '../../features/Finish/finish-slice';
+import { stopTimer } from '../../features/Timer/timer-slice';
 
 function Cards() {
   const dispatch = useDispatch();
-  const { grid } = useSelector(getSettings);
+  const { grid } = useSelector((state) => state.settings);
   const cardsArray = useSelector(getCards);
   const openedCards = useSelector(getOpenedCards);
 
   const stylesForCards = clsx(
     styles.cards,
-    grid === "4x4" ? styles.cardsGrid_4 : styles.cardsGrid_6
+    grid === '4x4' ? styles.cardsGrid_4 : styles.cardsGrid_6
   );
 
   useEffect(() => {
@@ -36,9 +36,9 @@ function Cards() {
   }, [dispatch, openedCards]);
 
   useEffect(() => {
-    const isGameOver = cardsArray.every((card) => card.status === "guessed");
+    const isGameOver = cardsArray.every((card) => card.status === 'guessed');
     if (isGameOver) {
-      dispatch(showFinish(true));
+      dispatch(toggleFinish(true));
       dispatch(stopTimer());
     }
   }, [dispatch, cardsArray]);

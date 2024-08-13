@@ -1,14 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { resetToDefault } from '../../utils/root-actions';
+import { createSlice } from "@reduxjs/toolkit";
+import { resetToDefault } from "../../utils/root-actions";
 
 const initialState = {
-  theme: 'numbers',
+  theme: "numbers",
   playersQuantity: 1,
-  grid: '4x4',
+  grid: "4x4",
 };
 
 const settingsSlice = createSlice({
-  name: 'settings',
+  name: "settings",
   initialState,
   reducers: {
     changeTheme: (state, action) => {

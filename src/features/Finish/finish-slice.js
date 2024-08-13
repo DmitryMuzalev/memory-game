@@ -1,17 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { resetToDefault } from '../../utils/root-actions';
+import { createSlice } from "@reduxjs/toolkit";
+
+import { resetToDefault } from "../../utils/root-actions";
+import { restartGame } from "../Game/game-slice";
 
 const finishSlice = createSlice({
-  name: 'finish',
+  name: "finish",
   initialState: false,
   reducers: {
-    toggleFinish: (_, action) => action.payload,
+    showFinish: () => true,
   },
   extraReducers: (builder) => {
-    builder.addCase(resetToDefault, () => false);
+    builder
+      .addCase(resetToDefault, () => false)
+      .addCase(restartGame, (state) => state && false);
   },
 });
 
-export const { toggleFinish } = finishSlice.actions;
-
+export const { showFinish } = finishSlice.actions;
 export const finishReducer = finishSlice.reducer;

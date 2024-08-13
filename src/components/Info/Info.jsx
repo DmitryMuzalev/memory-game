@@ -1,12 +1,10 @@
-import styles from './Info.module.scss';
+import styles from "./Info.module.scss";
 
-import { useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
+import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
-import { InfoBlock } from '../UI/InfoBlock/InfoBlock';
-import { Timer } from '../../features/Timer/Timer';
-
-import { getMovesCounter } from '../../features/Game/game-slice';
+import { InfoBlock } from "../UI/InfoBlock/InfoBlock";
+import { PlayerMode } from "../../features/PlayerMode/PlayerMode";
 
 function Info() {
   const { playersQuantity } = useSelector((state) => state.settings);
@@ -17,18 +15,8 @@ function Info() {
   );
 }
 
-function PlayerMode() {
-  const movesCounter = useSelector(getMovesCounter);
-  return (
-    <>
-      <Timer />
-      <InfoBlock label="moves" value={movesCounter} />
-    </>
-  );
-}
-
 function MultiplayerMode() {
-  const isMobile = useMediaQuery({ query: '(max-width: 540px)' });
+  const isMobile = useMediaQuery({ query: "(max-width: 540px)" });
   const currentPlayer = 0;
 
   const players = [

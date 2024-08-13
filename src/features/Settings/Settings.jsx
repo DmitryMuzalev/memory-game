@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '../../components/UI/Button/Button';
-import styles from './Settings.module.scss';
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "../../components/UI/Button/Button";
+import styles from "./Settings.module.scss";
 import {
   changeGrid,
   changePlayersQuantity,
   changeTheme,
-} from './settings-slice';
+} from "./settings-slice";
 
 function Settings() {
   const { theme, playersQuantity, grid } = useSelector(
@@ -18,7 +18,7 @@ function Settings() {
       <div className={styles.settingsBlock}>
         <label>Select Theme</label>
         <div className={styles.settingsBtns}>
-          {['numbers', 'icons'].map((t, index) => (
+          {["numbers", "icons"].map((t, index) => (
             <Button
               key={index}
               isActive={t === theme}
@@ -46,7 +46,7 @@ function Settings() {
       <div className={styles.settingsBlock}>
         <label>Grid Size</label>
         <div className={styles.settingsBtns}>
-          {['4x4', '6x6'].map((g, index) => (
+          {["4x4", "6x6"].map((g, index) => (
             <Button
               key={index}
               isActive={g === grid}

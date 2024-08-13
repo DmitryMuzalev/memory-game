@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { resetToDefault } from '../../utils/root-actions';
-import { restartGame, resumeGame } from '../Game/game-slice';
+import { createSlice } from "@reduxjs/toolkit";
+import { resetToDefault } from "../../utils/root-actions";
+import { restartGame, startGame } from "../Game/game-slice";
 
 const menuSlice = createSlice({
-  name: 'menu',
+  name: "menu",
   initialState: false,
   reducers: {
     showMenu: () => true,
@@ -11,7 +11,7 @@ const menuSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(resetToDefault, (state) => state && false)
-      .addCase(resumeGame, () => false)
+      .addCase(startGame, (state) => state && false)
       .addCase(restartGame, () => false);
   },
 });

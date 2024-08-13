@@ -1,17 +1,17 @@
-import { clsx } from 'clsx';
-import styles from './Button.module.scss';
+import { clsx } from "clsx";
+import styles from "./Button.module.scss";
 
 function Button({
   children,
-  type = 'default',
+  type = "default",
   isCircle = false,
   isActive = false,
   cb = () => {},
 }) {
   const stylesForButton = clsx(
     styles.button,
-    type === 'primary' && styles.buttonPrimary,
-    type === 'secondary' && styles.buttonSecondary,
+    type === "primary" && styles.buttonPrimary,
+    type === "secondary" && styles.buttonSecondary,
     isCircle && styles.buttonCircle,
     isActive && styles.buttonActive
   );

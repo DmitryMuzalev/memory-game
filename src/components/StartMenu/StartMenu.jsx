@@ -8,14 +8,19 @@ import { loadCards, startGame } from "../../features/Game/game-slice";
 import { Button } from "../UI/Button/Button";
 import { Settings } from "../../features/Settings/Settings";
 import { toggleHistory } from "../../features/History/history-slice";
+import { generatePlayers } from "../../features/MultiplayerMode/multiplayer-mode-slice";
 
 function StartMenu() {
   const dispatch = useDispatch();
-  const { grid } = useSelector((state) => state.settings);
+  const { grid, playersQuantity } = useSelector((state) => state.settings);
 
   useEffect(() => {
     dispatch(loadCards());
   }, [dispatch, grid]);
+
+  useEffect(() => {
+    dispatch(generatePlayers(playersQuantity));
+  }, [dispatch, playersQuantity]);
 
   return (
     <div className={styles.startMenu}>

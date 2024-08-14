@@ -12,7 +12,7 @@ const menuSlice = createSlice({
     builder
       .addCase(resetToDefault, (state) => state && false)
       .addCase(startGame, (state) => state && false)
-      .addCase(restartGame, () => false);
+      .addCase(restartGame, (state) => state && false);
   },
 });
 

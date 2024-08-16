@@ -27,8 +27,8 @@ function Cards() {
   }, [dispatch, openedCards]);
 
   useEffect(() => {
-    const isGameOver = cards.every((card) => card.status === "guessed");
-    isGameOver && dispatch(showFinish());
+    const isFinish = cards.every((card) => card.status === "guessed");
+    isFinish && dispatch(showFinish());
   }, [dispatch, cards]);
 
   return (

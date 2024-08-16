@@ -9,20 +9,30 @@ function FinishMultiplayerMode() {
 
   const { players } = useSelector((state) => state.multiplayerMode);
 
+  const results = [...players].sort((a, b) => b.points - a.points);
+  const maxPoints = results[0].points;
+  const isTie = results.filter((p) => p.points === maxPoints).length > 1;
+
   return (
     <>
-      <h2 className={styles.finishTitle}>{`Player ${1} Wins!`}</h2>
+      <h2 className={styles.finishTitle}>
+        {isTie ? "It's a tie!" : `Player ${results[0].id} Wins!`}
+      </h2>
       <p className={styles.finishSubtitle}>
         Game over! Here are the results...
       </p>
       <div className={styles.finishStatistic}>
-        {players.map((p, index) => {
+        {results.map((p, index) => {
           return (
             <InfoBlock
               key={index}
-              label={`Player ${p.id}`}
+              label={
+                maxPoints === p.points
+                  ? `Player ${p.id} (Winner!)`
+                  : `Player ${p.id}`
+              }
               value={isMobile ? p.points : `${p.points} Pairs`}
-              //isActive
+              isActive={maxPoints === p.points}
             />
           );
         })}

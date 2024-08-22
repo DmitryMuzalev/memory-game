@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { checkingOpenedCards, restartGame } from "../Game/game-slice";
+import { checkingOpenedCards, restartGame } from '../Game/game-slice';
 
-import { resetToDefault } from "../../utils/root-actions";
+import { resetToDefault } from '../../utils/root-actions';
+import { onPlayerMode } from '../PlayerMode/player-mode-slice';
 
 const initialState = {
   enabled: false,
@@ -11,7 +12,7 @@ const initialState = {
 };
 
 export const generatePlayers = createAsyncThunk(
-  "multiplayerMode/generate-players",
+  'multiplayerMode/generate-players',
   async (_, { getState }) => {
     const players = getState().settings.playersQuantity;
     return [...Array(players)].map((_, index) => ({
@@ -22,11 +23,11 @@ export const generatePlayers = createAsyncThunk(
 );
 
 const multiplayerModeSlice = createSlice({
-  name: "multiplayerMode",
+  name: 'multiplayerMode',
   initialState,
   reducers: {
-    changeMultiplayerMode: (state, action) => {
-      state.enabled = action.payload;
+    onMultiplayerMode: (state) => {
+      state.enabled = true;
     },
   },
   extraReducers: (builder) => {
@@ -54,10 +55,17 @@ const multiplayerModeSlice = createSlice({
           state.players = state.players.map((p) => ({ ...p, points: 0 }));
         }
       })
-      .addCase(resetToDefault, (state) => state.enabled && initialState);
+      .addCase(resetToDefault, (state) => {
+        if (state.enabled) {
+          return initialState;
+        }
+      })
+      .addCase(onPlayerMode, (state) => {
+        state.enabled = false;
+      });
   },
 });
 
-export const { changeMultiplayerMode } = multiplayerModeSlice.actions;
+export const { onMultiplayerMode } = multiplayerModeSlice.actions;
 
 export const multiplayerModeReducer = multiplayerModeSlice.reducer;

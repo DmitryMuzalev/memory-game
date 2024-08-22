@@ -1,15 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { resetToDefault } from "../../utils/root-actions";
-import { showMenu } from "../Menu/menu-slice";
+import { createSlice } from '@reduxjs/toolkit';
+import { resetToDefault } from '../../utils/root-actions';
+import { showMenu } from '../Menu/menu-slice';
 import {
   checkingOpenedCards,
   restartGame,
   startGame,
-} from "../Game/game-slice";
-import { showFinish } from "../Finish/finish-slice";
+} from '../Game/game-slice';
+import { showFinish } from '../Finish/finish-slice';
+import { onMultiplayerMode } from '../MultiplayerMode/multiplayer-mode-slice';
 
 const initialState = {
-  enabled: false,
+  enabled: true,
   timer: {
     isRun: false,
     time: 0,
@@ -18,19 +19,19 @@ const initialState = {
 };
 
 const playerModeSlice = createSlice({
-  name: "playerMode",
+  name: 'playerMode',
   initialState,
   reducers: {
     changeTime: (state) => {
       state.timer.time += 1;
     },
-    changePlayerMode: (state, action) => {
-      state.enabled = action.payload;
+    onPlayerMode: (state) => {
+      state.enabled = true;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(resetToDefault, (state) => state.enabled && initialState)
+      .addCase(resetToDefault, () => initialState)
       .addCase(showMenu, (state) => {
         if (state.enabled) {
           state.timer.isRun = false;
@@ -55,10 +56,13 @@ const playerModeSlice = createSlice({
         if (state.enabled) {
           state.moves += 1;
         }
+      })
+      .addCase(onMultiplayerMode, (state) => {
+        state.enabled = false;
       });
   },
 });
 
-export const { changeTime, changePlayerMode } = playerModeSlice.actions;
+export const { changeTime, onPlayerMode } = playerModeSlice.actions;
 
 export const playerModeReducer = playerModeSlice.reducer;

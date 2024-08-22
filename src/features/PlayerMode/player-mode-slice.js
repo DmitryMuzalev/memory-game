@@ -9,6 +9,7 @@ import {
 import { showFinish } from "../Finish/finish-slice";
 
 const initialState = {
+  enabled: false,
   timer: {
     isRun: false,
     time: 0,
@@ -23,30 +24,41 @@ const playerModeSlice = createSlice({
     changeTime: (state) => {
       state.timer.time += 1;
     },
+    changePlayerMode: (state, action) => {
+      state.enabled = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(resetToDefault, () => initialState)
+      .addCase(resetToDefault, (state) => state.enabled && initialState)
       .addCase(showMenu, (state) => {
-        state.timer.isRun = false;
+        if (state.enabled) {
+          state.timer.isRun = false;
+        }
       })
       .addCase(showFinish, (state) => {
-        state.timer.isRun = false;
+        if (state.enabled) {
+          state.timer.isRun = false;
+        }
       })
       .addCase(startGame, (state) => {
-        if (!state.timer.isRun) state.timer.isRun = true;
+        if (state.enabled) state.timer.isRun = true;
       })
       .addCase(restartGame, (state) => {
-        state.timer.isRun = true;
-        state.timer.time = 0;
-        state.moves = 0;
+        if (state.enabled) {
+          state.timer.isRun = true;
+          state.timer.time = 0;
+          state.moves = 0;
+        }
       })
       .addCase(checkingOpenedCards.fulfilled, (state) => {
-        state.moves += 1;
+        if (state.enabled) {
+          state.moves += 1;
+        }
       });
   },
 });
 
-export const { changeTime } = playerModeSlice.actions;
+export const { changeTime, changePlayerMode } = playerModeSlice.actions;
 
 export const playerModeReducer = playerModeSlice.reducer;

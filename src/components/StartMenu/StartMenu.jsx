@@ -1,25 +1,32 @@
 import styles from "./StartMenu.module.scss";
 import { FaChartLine } from "react-icons/fa6";
 
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCards, startGame } from "../../features/Game/game-slice";
 
 import { Button } from "../UI/Button/Button";
 import { Settings } from "../../features/Settings/Settings";
 import { toggleHistory } from "../../features/History/history-slice";
-import { generatePlayers } from "../../features/MultiplayerMode/multiplayer-mode-slice";
+import { useEffect } from "react";
+import { changePlayerMode } from "../../features/PlayerMode/player-mode-slice";
+import { changeMultiplayerMode } from "../../features/MultiplayerMode/multiplayer-mode-slice";
 
 function StartMenu() {
   const dispatch = useDispatch();
-  const { grid, playersQuantity } = useSelector((state) => state.settings);
+  const { playersQuantity } = useSelector((state) => state.settings);
 
   useEffect(() => {
     dispatch(loadCards());
-  }, [dispatch, grid]);
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(generatePlayers(playersQuantity));
+    if (playersQuantity === 1) {
+      dispatch(changePlayerMode(true));
+      dispatch(changeMultiplayerMode(false));
+    } else {
+      dispatch(changePlayerMode(false));
+      dispatch(changeMultiplayerMode(true));
+    }
   }, [dispatch, playersQuantity]);
 
   return (

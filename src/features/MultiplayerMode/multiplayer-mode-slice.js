@@ -5,35 +5,39 @@ import { checkingOpenedCards, restartGame } from "../Game/game-slice";
 import { resetToDefault } from "../../utils/root-actions";
 
 const initialState = {
+  enabled: false,
   players: [],
   currentPlayer: 1,
 };
 
 export const generatePlayers = createAsyncThunk(
   "multiplayerMode/generate-players",
-  async (players) => {
-    if (players !== 1) {
-      return [...Array(players)].map((_, index) => ({
-        id: index + 1,
-        points: 0,
-      }));
-    } else {
-      return [];
-    }
+  async (_, { getState }) => {
+    const players = getState().settings.playersQuantity;
+    return [...Array(players)].map((_, index) => ({
+      id: index + 1,
+      points: 0,
+    }));
   }
 );
 
 const multiplayerModeSlice = createSlice({
   name: "multiplayerMode",
   initialState,
-  reducers: {},
+  reducers: {
+    changeMultiplayerMode: (state, action) => {
+      state.enabled = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(generatePlayers.fulfilled, (state, action) => {
-        state.players = action.payload;
+        if (state.enabled) {
+          state.players = action.payload;
+        }
       })
       .addCase(checkingOpenedCards.fulfilled, (state, action) => {
-        if (state.players.length) {
+        if (state.enabled) {
           if (action.payload) {
             state.players[state.currentPlayer - 1].points += 1;
           } else {
@@ -45,13 +49,15 @@ const multiplayerModeSlice = createSlice({
         }
       })
       .addCase(restartGame, (state) => {
-        if (state.players.length) {
+        if (state.enabled) {
           state.currentPlayer = 1;
           state.players = state.players.map((p) => ({ ...p, points: 0 }));
         }
       })
-      .addCase(resetToDefault, () => initialState);
+      .addCase(resetToDefault, (state) => state.enabled && initialState);
   },
 });
+
+export const { changeMultiplayerMode } = multiplayerModeSlice.actions;
 
 export const multiplayerModeReducer = multiplayerModeSlice.reducer;

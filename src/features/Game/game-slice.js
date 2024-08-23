@@ -4,13 +4,10 @@ import data from "../../data";
 import { shuffleCards } from "../../utils/shuffle-algorithm";
 import { resetToDefault } from "../../utils/root-actions";
 
-export const loadCards = createAsyncThunk(
-  "game/load-cards",
-  async (_, { getState }) => {
-    const items = getState().settings.grid === "4x4" ? data.slice(0, 8) : data;
-    return shuffleCards(items.concat(items));
-  }
-);
+export const loadCards = createAsyncThunk("game/load-cards", async (grid) => {
+  const items = grid === "4x4" ? data.slice(0, 8) : data;
+  return shuffleCards(items.concat(items));
+});
 
 export const checkingOpenedCards = createAsyncThunk(
   "game/checking-opened-cards",

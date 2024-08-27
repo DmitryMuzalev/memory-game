@@ -9,7 +9,7 @@
   padding: 2rem 0;
 
   &Content {
-    min-height: 30rem;
+    height: 30rem;
     width: 30rem;
     display: flex;
     flex-direction: column;
@@ -17,6 +17,7 @@
     background-color: var(--c-white-1);
     padding: 2.25rem 2.5rem;
     border-radius: 1rem;
+    overflow: hidden;
   }
 
   @media (max-width: 540px) {

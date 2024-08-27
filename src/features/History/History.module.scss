@@ -1,8 +1,12 @@
 .history {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  height: 100%;
+
   &CTA {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1rem;
     button {
       font-size: 1rem;
       &:last-child {
@@ -27,6 +31,50 @@
       }
     }
   }
+
+  &Content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    flex-grow: 1;
+    max-width: 100%;
+    overflow: auto;
+
+    &Title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      background-color: var(--c-blue-1);
+      color: var(--c-white-1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    &Subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      background-color: var(--c-blue-4);
+      color: var(--c-white-1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    &Table {
+      width: 100%;
+      th {
+        color: var(--c-blue-2);
+      }
+      td {
+        color: var(--c-blue-2);
+        font-weight: 500;
+      }
+      td,
+      th {
+        background-color: var(--c-blue-6);
+        padding: 0.15rem;
+        border-radius: 0.25rem;
+        text-align: center;
+      }
+    }
+  }
+
   @media (max-width: 540px) {
     &CTA {
       gap: 0.75rem;
@@ -37,6 +85,14 @@
     }
     &Empty {
       p {
+        font-size: 1rem;
+      }
+    }
+    &Content {
+      &Title {
+        font-size: 1.25rem;
+      }
+      &Subtitle {
         font-size: 1rem;
       }
     }

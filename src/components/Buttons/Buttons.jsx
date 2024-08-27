@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../UI/Button/Button";
 import { resetToDefault } from "../../utils/root-actions";
 import {
@@ -18,12 +18,13 @@ function ResetGame() {
 
 function RestartGame() {
   const dispatch = useDispatch();
+  const { grid } = useSelector((state) => state.settings);
   return (
     <Button
       type="primary"
       cb={() => {
         dispatch(restartGame());
-        setTimeout(() => dispatch(loadCards()), 350);
+        setTimeout(() => dispatch(loadCards(grid)), 350);
       }}
     >
       restart

@@ -5,9 +5,18 @@ import { useSelector } from "react-redux";
 import { timeFormatter } from "../../utils/time-formatter";
 
 import { InfoBlock } from "../../components/UI/InfoBlock/InfoBlock";
+import { useEffect } from "react";
+import { updateLocalStorage } from "../../utils/use-local-storage";
 
 function FinishPlayerMode() {
   const { timer, moves } = useSelector((state) => state.playerMode);
+  const { grid } = useSelector((state) => state.settings);
+  const time = timeFormatter(timer.time);
+
+  useEffect(() => {
+    updateLocalStorage("playerMode", { grid, time, moves });
+  }, [grid, time, moves]);
+
   return (
     <>
       <h2 className={styles.finishTitle}>You did it!</h2>
@@ -15,7 +24,7 @@ function FinishPlayerMode() {
         Game over! Here’s how you got on...
       </p>
       <div className={styles.finishStatistic}>
-        <InfoBlock label="Time Elapsed" value={timeFormatter(timer.time)} />
+        <InfoBlock label="Time Elapsed" value={time} />
         <InfoBlock label="Moves Taken" value={moves} />
       </div>
     </>

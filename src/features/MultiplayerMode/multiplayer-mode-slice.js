@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { checkingOpenedCards, restartGame } from "../Game/game-slice";
+import { checkingOpenedCards, restartGame } from '../Game/game-slice';
 
-import { resetToDefault } from "../../utils/root-actions";
-import { onPlayerMode } from "../PlayerMode/player-mode-slice";
+import { resetToDefault } from '../../utils/root-actions';
+import { onSingleMode } from '../SingleMode/single-mode-slice';
 
 const initialState = {
   enabled: false,
@@ -12,7 +12,7 @@ const initialState = {
 };
 
 export const generatePlayers = createAsyncThunk(
-  "multiplayerMode/generate-players",
+  'multiplayerMode/generate-players',
   async (_, { getState }) => {
     const players = getState().settings.playersQuantity;
     return [...Array(players)].map((_, index) => ({
@@ -23,7 +23,7 @@ export const generatePlayers = createAsyncThunk(
 );
 
 const multiplayerModeSlice = createSlice({
-  name: "multiplayerMode",
+  name: 'multiplayerMode',
   initialState,
   reducers: {
     onMultiplayerMode: (state) => {
@@ -60,7 +60,7 @@ const multiplayerModeSlice = createSlice({
           return initialState;
         }
       })
-      .addCase(onPlayerMode, (state) => {
+      .addCase(onSingleMode, (state) => {
         state.enabled = false;
       });
   },

@@ -1,31 +1,31 @@
-import styles from "./History.module.scss";
-import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from "react-icons/fa6";
+import styles from './History.module.scss';
+import { FaArrowLeftLong, FaPuzzlePiece, FaListOl } from 'react-icons/fa6';
 
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
-import { toggleHistory } from "./history-slice";
-import { Button } from "../../components/UI/Button/Button";
-import { useLocalStorage } from "../../utils/use-local-storage";
+import { toggleHistory } from './history-slice';
+import { Button } from '../../components/UI/Button/Button';
+import { useLocalStorage } from '../../utils/use-local-storage';
 
 function History() {
-  const [plrModeHG, setPlrModeHG] = useLocalStorage([], "playerMode");
-  const [multiModeHG, setMultiModeHG] = useLocalStorage([], "multiplayerMode");
+  const [sngModeHG, setSngModeHG] = useLocalStorage([], 'singleMode');
+  const [multiModeHG, setMultiModeHG] = useLocalStorage([], 'multiplayerMode');
 
   const resetHistory = () => {
-    setPlrModeHG([]);
+    setSngModeHG([]);
     setMultiModeHG([]);
   };
 
   return (
     <div className={styles.history}>
       <HistoryCTA reset={resetHistory} />
-      {plrModeHG.length || multiModeHG.length ? (
+      {sngModeHG.length || multiModeHG.length ? (
         <div className={styles.historyContent}>
-          {!!plrModeHG.length && (
+          {!!sngModeHG.length && (
             <HistoryContentBlock
-              title="Player mode"
-              games={plrModeHG}
-              createTableFunction={createTableForHistoryPlayerMode}
+              title="Single mode"
+              games={sngModeHG}
+              createTableFunction={createTableForHistorySingleMode}
             />
           )}
           {!!multiModeHG.length && (
@@ -71,8 +71,8 @@ function HistoryEmpty() {
 }
 
 function HistoryContentBlock({ title, games, createTableFunction }) {
-  const games4 = games.filter((g) => g.grid === "4x4");
-  const games6 = games.filter((g) => g.grid === "6x6");
+  const games4 = games.filter((g) => g.grid === '4x4');
+  const games6 = games.filter((g) => g.grid === '6x6');
 
   return (
     <div className={styles.historyContentBlock}>
@@ -83,11 +83,11 @@ function HistoryContentBlock({ title, games, createTableFunction }) {
   );
 }
 
-function createTableForHistoryPlayerMode(grid, games) {
+function createTableForHistorySingleMode(grid, games) {
   return (
     <>
       <h4 className={styles.historyContentSubtitle}>
-        Grid {grid === 4 ? "4x4" : "6x6"}
+        Grid {grid === 4 ? '4x4' : '6x6'}
       </h4>
       <table className={styles.historyContentTable}>
         <thead>
@@ -116,7 +116,7 @@ function createTableForHistoryMultiplayerMode(grid, games) {
   return (
     <>
       <h4 className={styles.historyContentSubtitle}>
-        Grid {grid === 4 ? "4x4" : "6x6"}
+        Grid {grid === 4 ? '4x4' : '6x6'}
       </h4>
       <table className={styles.historyContentTable}>
         <thead>
@@ -138,7 +138,7 @@ function createTableForHistoryMultiplayerMode(grid, games) {
               <tr key={index}>
                 <td>{index + 1}</td>
                 {points.map((p, index) => {
-                  return <td key={index}>{p ? p : "-"}</td>;
+                  return <td key={index}>{p ? p : '-'}</td>;
                 })}
               </tr>
             );

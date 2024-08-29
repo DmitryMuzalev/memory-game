@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Button } from "../UI/Button/Button";
-import { resetToDefault } from "../../utils/root-actions";
+import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '../UI/Button/Button';
+import { resetToDefault } from '../../utils/root-actions';
 import {
   loadCards,
   restartGame,
   startGame,
-} from "../../features/Game/game-slice";
+} from '../../features/Game/game-slice';
 
 function ResetGame() {
   const dispatch = useDispatch();

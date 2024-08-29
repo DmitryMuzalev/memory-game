@@ -1,20 +1,20 @@
-import styles from "./Finish.module.scss";
+import styles from './Finish.module.scss';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { timeFormatter } from "../../utils/time-formatter";
+import { timeFormatter } from '../../utils/time-formatter';
 
-import { InfoBlock } from "../../components/UI/InfoBlock/InfoBlock";
-import { useEffect } from "react";
-import { updateLocalStorage } from "../../utils/use-local-storage";
+import { InfoBlock } from '../../components/UI/InfoBlock/InfoBlock';
+import { useEffect } from 'react';
+import { updateLocalStorage } from '../../utils/use-local-storage';
 
-function FinishPlayerMode() {
-  const { timer, moves } = useSelector((state) => state.playerMode);
+function FinishSingleMode() {
+  const { timer, moves } = useSelector((state) => state.singleMode);
   const { grid } = useSelector((state) => state.settings);
   const time = timeFormatter(timer.time);
 
   useEffect(() => {
-    updateLocalStorage("playerMode", { grid, time, moves });
+    updateLocalStorage('singleMode', { grid, time, moves });
   }, [grid, time, moves]);
 
   return (
@@ -31,4 +31,4 @@ function FinishPlayerMode() {
   );
 }
 
-export { FinishPlayerMode };
+export { FinishSingleMode };

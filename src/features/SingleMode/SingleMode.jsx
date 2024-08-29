@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { InfoBlock } from "../../components/UI/InfoBlock/InfoBlock";
+import { InfoBlock } from '../../components/UI/InfoBlock/InfoBlock';
 
-import { timeFormatter } from "../../utils/time-formatter";
+import { timeFormatter } from '../../utils/time-formatter';
 
-import { changeTime } from "./player-mode-slice";
+import { changeTime } from './single-mode-slice';
 
-function PlayerMode() {
-  const { timer, moves } = useSelector((state) => state.playerMode);
+function SingleMode() {
+  const { timer, moves } = useSelector((state) => state.singleMode);
 
   return (
     <>
@@ -31,4 +31,4 @@ function Timer({ isRun, time }) {
   return <InfoBlock label="time" value={timeFormatter(time)} />;
 }
 
-export { PlayerMode };
+export { SingleMode };

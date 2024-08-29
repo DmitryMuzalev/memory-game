@@ -1,15 +1,15 @@
-import styles from "./Info.module.scss";
+import styles from './Info.module.scss';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { PlayerMode } from "../../features/PlayerMode/PlayerMode";
-import { MultiplayerMode } from "../../features/MultiplayerMode/MultiplayerMode";
+import { SingleMode } from '../../features/SingleMode/SingleMode';
+import { MultiplayerMode } from '../../features/MultiplayerMode/MultiplayerMode';
 
 function Info() {
   const { playersQuantity } = useSelector((state) => state.settings);
   return (
     <div className={styles.info}>
-      {playersQuantity === 1 ? <PlayerMode /> : <MultiplayerMode />}
+      {playersQuantity === 1 ? <SingleMode /> : <MultiplayerMode />}
     </div>
   );
 }

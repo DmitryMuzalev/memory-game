@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { resetToDefault } from '../../utils/root-actions';
+
 import { showMenu } from '../Menu/menu-slice';
 import {
   checkingOpenedCards,
   restartGame,
   startGame,
 } from '../Game/game-slice';
+import { resetToDefault } from '../../utils/root-actions';
 import { showFinish } from '../Finish/finish-slice';
 import { onMultiplayerMode } from '../MultiplayerMode/multiplayer-mode-slice';
 
@@ -18,14 +19,14 @@ const initialState = {
   moves: 0,
 };
 
-const playerModeSlice = createSlice({
-  name: 'playerMode',
+const singleModeSlice = createSlice({
+  name: 'singleMode',
   initialState,
   reducers: {
     changeTime: (state) => {
       state.timer.time += 1;
     },
-    onPlayerMode: (state) => {
+    onSingleMode: (state) => {
       state.enabled = true;
     },
   },
@@ -63,6 +64,6 @@ const playerModeSlice = createSlice({
   },
 });
 
-export const { changeTime, onPlayerMode } = playerModeSlice.actions;
+export const { changeTime, onSingleMode } = singleModeSlice.actions;
 
-export const playerModeReducer = playerModeSlice.reducer;
+export const singleModeReducer = singleModeSlice.reducer;

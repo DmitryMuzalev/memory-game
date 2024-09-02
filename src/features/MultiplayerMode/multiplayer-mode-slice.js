@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { checkingOpenedCards, restartGame } from '../Game/game-slice';
 
 import { resetToDefault } from '../../utils/root-actions';
-import { onPlayerMode } from '../PlayerMode/player-mode-slice';
+import { onSingleMode } from '../SingleMode/single-mode-slice';
 
 const initialState = {
   enabled: false,
@@ -51,7 +51,7 @@ const multiplayerModeSlice = createSlice({
       })
       .addCase(restartGame, (state) => {
         if (state.enabled) {
-          state.currentPlayer = 1;
+          state.currentPlayer = initialState.currentPlayer;
           state.players = state.players.map((p) => ({ ...p, points: 0 }));
         }
       })
@@ -60,7 +60,7 @@ const multiplayerModeSlice = createSlice({
           return initialState;
         }
       })
-      .addCase(onPlayerMode, (state) => {
+      .addCase(onSingleMode, (state) => {
         state.enabled = false;
       });
   },
